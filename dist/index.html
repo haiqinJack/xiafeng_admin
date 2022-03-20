@@ -10,7 +10,10 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
             crossorigin="anonymous"
         />
-        <script src="https://web-9gikcbug35bad3a8-1304825656.tcloudbaseapp.com/sdk/1.3.0/cloud.js"></script>
+        <script
+            src="https://web-9gikcbug35bad3a8-1304825656.tcloudbaseapp.com/sdk/1.3.0/cloud.js"
+            type="module"
+        ></script>
         <script>
             window.onload = async function () {
                 var c1 = new cloud.Cloud({
@@ -21,7 +24,7 @@
                 await c1.init();
 
                 const res = await c1.callContainer({
-                    path: "/",
+                    path: "/xiafeng",
                     method: "GET",
                     header: {
                         "X-WX-SERVICE": "xiafeng",
@@ -31,8 +34,8 @@
                 console.log(res); // 在控制台里查看打印
             };
         </script>
-      <script type="module" crossorigin src="/assets/index.d7e24ca7.js"></script>
-      <link rel="modulepreload" href="/assets/vendor.eb21e818.js">
+      <script type="module" crossorigin src="/assets/index.5f30cd2c.js"></script>
+      <link rel="modulepreload" href="/assets/vendor.8b29c9a1.js">
       <link rel="stylesheet" href="/assets/index.c15c99bc.css">
     </head>
     <body>

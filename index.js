@@ -1,7 +1,8 @@
 const express = require("express");
+var history = require("connect-history-api-fallback");
 var path = require("path");
 const app = express();
-
+app.use(history());
 // Register ejs as .html. If we did
 // not call this, we would need to
 // name our views foo.ejs instead
@@ -29,6 +30,11 @@ app.get("/", (req, res) => {
 app.get("/xiafeng", (req, res) => {
     res.send("欢迎使用微信云托管！");
 });
+
+// // 404 处理 所要未处理的请求路径都会在这里处理
+// app.use(function (req, res) {
+//     res.render("index");
+// });
 
 const port = process.env.PORT || 80;
 app.listen(port, () => {

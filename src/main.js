@@ -8,6 +8,12 @@ import store from "./store";
 import "./permission";
 const app = createApp(App);
 
+var url = window.location.href;
+url = url.split(window.location.host)[1];
+console.log("url", url);
+
+router.push(url);
+
 app.use(router).use(store).use(ElementPlus);
 
 router.isReady().then(() => app.mount("#app"));
