@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+            crossorigin="anonymous"
+        />
+        <script src="https://web-9gikcbug35bad3a8-1304825656.tcloudbaseapp.com/sdk/1.3.0/cloud.js"></script>
+        <script>
+            window.onload = async function () {
+                var c1 = new cloud.Cloud({
+                    identityless: true, // 如果你是普通WEB网页开发，设置为true，如果是公众号开发，则去掉
+                    resourceAppid: "wx3c6187fcebb1fd68", // 微信云托管所在的「小程序/公众号」appid
+                    resourceEnv: "prod-0g9srljhceed8276", // 微信云托管环境ID，不能为空
+                });
+                await c1.init();
+
+                const res = await c1.callContainer({
+                    path: "/xiafeng",
+                    method: "GET",
+                    header: {
+                        "X-WX-SERVICE": "xiafeng",
+                    },
+                });
+
+                console.log(res); // 在控制台里查看打印
+            };
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.js"></script>
+    </body>
 </html>
