@@ -24,7 +24,6 @@ export default defineConfig(({ command, mode }) => {
     };
     if (mode === "development") {
         return Object.assign(common, {
-            base: "http://localhost:80",
             server: {
                 cors: true,
                 proxy: {
@@ -37,8 +36,15 @@ export default defineConfig(({ command, mode }) => {
         });
     } else {
         return Object.assign(common, {
-            base: "https://xiafeng-1731703-1301297803.ap-shanghai.run.tcloudbase.com",
-            // base: "http://localhost:80",
+            server: {
+                cors: true,
+                proxy: {
+                    "/signin": {
+                        target: "https://xiafeng-1731703-1301297803.ap-shanghai.run.tcloudbase.com",
+                        changeOrigin: true,
+                    },
+                },
+            },
         });
     }
 });
