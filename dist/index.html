@@ -3,18 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"
+        />
         <title>Vite App</title>
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
             crossorigin="anonymous"
         />
-        <script
-            src="https://web-9gikcbug35bad3a8-1304825656.tcloudbaseapp.com/sdk/1.3.0/cloud.js"
-            type="module"
-        ></script>
+        <!-- 调试用的移动端 console -->
+        <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
         <script>
+            eruda.init();
+        </script>
+        <!-- 公众号 JSSDK -->
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+        <!-- 云开发 Web SDK -->
+        <script src="https://res.wx.qq.com/open/js/cloudbase/1.1.0/cloud.js"></script>
+        <script>
+            if (window.wx) {
+                window.cloud = wx.cloud;
+            }
             window.onload = async function () {
                 var c1 = new cloud.Cloud({
                     identityless: true, // 如果你是普通WEB网页开发，设置为true，如果是公众号开发，则去掉
@@ -22,7 +35,7 @@
                     resourceEnv: "prod-0g9srljhceed8276", // 微信云托管环境ID，不能为空
                 });
                 await c1.init();
-
+                window.c1 = c1;
                 const res = await c1.callContainer({
                     path: "/xiafeng",
                     method: "GET",
@@ -31,10 +44,10 @@
                     },
                 });
 
-                console.log(res); // 在控制台里查看打印
+                console.log(res, "web sdk"); // 在控制台里查看打印
             };
         </script>
-      <script type="module" crossorigin src="/assets/index.0138a970.js"></script>
+      <script type="module" crossorigin src="/assets/index.46a77f62.js"></script>
       <link rel="modulepreload" href="/assets/vendor.8b29c9a1.js">
       <link rel="stylesheet" href="/assets/index.c15c99bc.css">
     </head>
