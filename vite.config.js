@@ -37,8 +37,8 @@ export default defineConfig(({ command, mode }) => {
         });
     } else {
         return Object.assign(common, {
-            // base: "https://xiafeng-1731703-1301297803.ap-shanghai.run.tcloudbase.com",
-            base: "http://localhost:80",
+            base: "https://xiafeng-1731703-1301297803.ap-shanghai.run.tcloudbase.com",
+            // base: "http://localhost:80",
         });
     }
 });
