@@ -1,29 +1,23 @@
 <template>
     <router-view />
+    <ImageDialog ref="ImageDialogRef" :max="1" />
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-
-export default defineComponent({
-    name: "App",
-    setup() {
-        const isCollapse = ref(false);
-        const route = {
-            path: "/about",
-        };
-        const handleOpen = (key, keyPath) => {
-            console.log(key, keyPath);
-        };
-        const handleClose = (key, keyPath) => {
-            console.log(key, keyPath);
-        };
+<script>
+import ImageDialog from "@/components/image/ImageDialog.vue";
+export default {
+    components: {
+        ImageDialog,
+    },
+    provide() {
         return {
-            isCollapse,
-            route,
-            handleOpen,
-            handleClose,
+            app: this,
         };
     },
-});
+    methods: {
+        chooseImage(cb) {
+            this.$refs.ImageDialogRef.chooseImage(cb);
+        },
+    },
+};
 </script>
