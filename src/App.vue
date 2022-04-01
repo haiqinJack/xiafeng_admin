@@ -1,13 +1,16 @@
 <template>
     <router-view />
-    <ImageDialog ref="ImageDialogRef" :max="1" />
+    <imageDialog ref="ImageDialogRef" :max="1" />
+    <skuDialog ref="SkuDialogRef" />
 </template>
 
 <script>
-import ImageDialog from "@/components/image/ImageDialog.vue";
+import imageDialog from "@/components/image/ImageDialog.vue";
+import skuDialog from "@/components/skus/sku-dialog.vue";
 export default {
     components: {
-        ImageDialog,
+        imageDialog,
+        skuDialog,
     },
     provide() {
         return {
@@ -15,8 +18,13 @@ export default {
         };
     },
     methods: {
+        // 选择图片
         chooseImage(cb) {
             this.$refs.ImageDialogRef.chooseImage(cb);
+        },
+        // 选择规格
+        chooseSkus(cb) {
+            this.$refs.SkuDialogRef.chooseSkus(cb);
         },
     },
 };

@@ -23,7 +23,13 @@ export default {
             {
                 name: "颜色",
                 type: 0,
-                list: [],
+                list: [
+                    // {
+                    //     name: "规格值",
+                    //     image: "",
+                    //     color: "",
+                    // },
+                ],
             },
         ],
 

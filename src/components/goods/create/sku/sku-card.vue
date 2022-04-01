@@ -7,8 +7,15 @@
                 :model-value="item.name"
                 @input="vModelSku(index, 'name', $event)"
             >
+                <!-- 三个点 -->
                 <template #append>
-                    <el-button type="primary" :icon="MoreFilled" />
+                    <el-button @click="chooseSkus" type="primary">
+                        <template #icon>
+                            <el-icon>
+                                <MoreFilled />
+                            </el-icon>
+                        </template>
+                    </el-button>
                 </template>
             </el-input>
             <el-radio-group
@@ -23,17 +30,27 @@
             </el-radio-group>
             <!-- 上移 -->
             <el-button
-                :icon="Top"
                 class="ml-auto"
                 :disabled="index === 0"
                 @click="sortCard('moveUp', index)"
-            ></el-button>
+            >
+                <template #icon>
+                    <el-icon>
+                        <Top />
+                    </el-icon>
+                </template>
+            </el-button>
             <!-- 下移 -->
             <el-button
-                :icon="Bottom"
                 :disabled="total === index + 1"
                 @click="sortCard('moveDown', index)"
-            ></el-button>
+            >
+                <template #icon>
+                    <el-icon>
+                        <Bottom />
+                    </el-icon>
+                </template>
+            </el-button>
             <el-button type="text" @click="removeSkuCard(index)"
                 >删除</el-button
             >
@@ -52,7 +69,12 @@
             </div>
             <!-- 增加规格值 -->
             <div class="mt-2">
-                <el-button type="text" :icon="Plus" @click="addSkuValue(index)">
+                <el-button type="text" @click="addSkuValue(index)">
+                    <template #icon>
+                        <el-icon>
+                            <Plus />
+                        </el-icon>
+                    </template>
                     增加规格值
                 </el-button>
             </div>
@@ -77,21 +99,16 @@ export default {
         CircleClose,
         CircleCloseFilled,
         Plus,
+        MoreFilled,
+        Top,
+        Bottom,
     },
     props: {
         item: Object,
         index: Number,
         total: Number,
     },
-
-    setup() {
-        return {
-            MoreFilled,
-            Top,
-            Bottom,
-            Plus,
-        };
-    },
+    inject: ["app"],
     methods: {
         ...mapMutations([
             "removeSkuCard",
@@ -104,6 +121,17 @@ export default {
         },
         sortCard(action, index) {
             this.sortSkuCard({ action, index });
+        },
+        // 选择规格
+        chooseSkus() {
+            this.app.chooseSkus((res) => {
+                let index = this.index;
+                let { name, type, list } = res;
+
+                this.vModelSku(index, "name", name);
+                this.vModelSku(index, "type", type);
+                this.vModelSku(index, "list", list);
+            });
         },
     },
 };
