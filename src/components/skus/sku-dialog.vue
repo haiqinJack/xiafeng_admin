@@ -91,14 +91,14 @@ export default {
                     list: [
                         {
                             id: "1",
-                            name: "规格值",
+                            name: "蓝色",
                             image: "",
                             color: "",
                             ischeck: false,
                         },
                         {
                             id: "3",
-                            name: "规格值3",
+                            name: "红色",
                             image: "",
                             color: "",
                             ischeck: false,
@@ -106,12 +106,12 @@ export default {
                     ],
                 },
                 {
-                    name: "颜色2",
+                    name: "尺寸",
                     type: 0,
                     list: [
                         {
                             id: "2",
-                            name: "规格值2",
+                            name: "S",
                             image: "",
                             color: "",
                             ischeck: false,
