@@ -40,7 +40,7 @@ export default {
             { name: "sku图片", rowspan: 2, width: "60" },
             { name: "商品价格", rowspan: 2, width: "60" },
             { name: "库存", rowspan: 2, width: "60" },
-            { name: "条码", rowspan: 2, width: "60" },
+            { name: "编码", rowspan: 2, width: "60" },
         ],
     },
     getters: {

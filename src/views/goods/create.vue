@@ -161,8 +161,36 @@
                                 >
                             </div>
                         </el-form-item>
+					</el-form>
+					<el-form ref="form" label-width="80px">
+						<el-form-item label="批量设置">
+							<template v-if="!updateAllStatus">
+								<el-button type="text" 
+									v-for="(btn, btnIndex) in updateList"
+									:key="btnIndex"
+									
+									@click="openUpdateAllStatus(btn)"
+								>{{btn.name}}</el-button>
+							</template>
+							<template v-else>
+								<div class="d-flex align-items-center">
+									<el-input 
+										style="width:150px;" 
+										class="mr-2" 
+										type="number"
+										v-model="updateAllValue"
+										:placeholder="updateAllPlaceholder"
+									>
+									</el-input>								
+									<el-button type="primary" @click="updateAllSubmit">设置</el-button>
+									<el-button @click="closeUpdateAllStatus">取消</el-button>
+								</div>								
+							</template>
+						</el-form-item>
+						
+						
                         <el-form-item label="商品规格" v-if="skuCardTotal">
-                            <skuTable />
+                            <skuTable ref="skuTableRef"/>
                         </el-form-item>
                     </el-form>
                 </template>
@@ -482,11 +510,16 @@ export default {
                     ],
                 },
             ],
-            content: "<p>html content</p>",
-            setting: {
-                height: 500,
-                language: "zh_CN",
-            },
+            
+			updateList:[
+				{name: '商品价格', key:'pprice'},
+				{name: '库存', key:'stock'},
+				{name: '编码', key:'code'},
+			],
+			updateAllValue: '',
+			updateAllStatus: false,
+			updateAllPlaceholder: ''
+			
         };
     },
 
@@ -498,9 +531,22 @@ export default {
         handleClick(tab, event) {
             console.log(tab, event);
         },
-        setup(editor) {
-            console.log(editor);
-        },
+		openUpdateAllStatus(item) {
+			this.updateAllStatus = item.key
+			this.updateAllPlaceholder = item.name
+		},
+		// 取消批量设置状态
+		closeUpdateAllStatus(){
+			this.updateAllStatus = false
+			this.updateAllPlaceholder = ''
+			this.updateAllValue = ''
+		},
+		updateAllSubmit(){
+			this.$refs.skuTableRef.list.forEach(item => {
+				item[this.updateAllStatus] = this.updateAllValue
+			})
+		}
+		
     },
 };
 </script>
