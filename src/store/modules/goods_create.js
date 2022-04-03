@@ -32,7 +32,15 @@ export default {
                 ],
             },
         ],
-
+		
+		// 商品主图
+		banners:[
+			// {
+			// 	id:'1',
+			// 	url:''
+			// }
+		],
+		
         //规格table
         //表头
         ths: [

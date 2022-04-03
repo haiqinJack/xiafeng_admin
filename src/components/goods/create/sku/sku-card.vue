@@ -26,7 +26,7 @@
             >
                 <el-radio :label="0">无</el-radio>
                 <!-- <el-radio :label="1">颜色</el-radio> -->
-                <!-- <el-radio :label="2">图片</el-radio> -->
+                <el-radio :label="2">图片</el-radio>
             </el-radio-group>
             <!-- 上移 -->
             <el-button

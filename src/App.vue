@@ -1,6 +1,6 @@
 <template>
     <router-view />
-    <imageDialog ref="ImageDialogRef" :max="1" />
+    <imageDialog ref="ImageDialogRef" :max="max" />
     <skuDialog ref="SkuDialogRef" />
 </template>
 
@@ -12,14 +12,26 @@ export default {
         imageDialog,
         skuDialog,
     },
+	data() {
+		return {
+			max: 3
+		}
+	},
     provide() {
         return {
             app: this,
+			
         };
     },
     methods: {
-        // 选择图片
-        chooseImage(cb) {
+        /**
+		 * @param {Object} cb 回调函数
+		 * @param {number} max 最大选择长度
+		 */
+        chooseImage(cb, max) {
+			if(max) {
+				this.max = max
+			}
             this.$refs.ImageDialogRef.chooseImage(cb);
         },
         // 选择规格

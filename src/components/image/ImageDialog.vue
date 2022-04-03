@@ -198,7 +198,7 @@ export default {
     props: {
         max: {
             type: Number,
-            default: 9,
+            default: 5,
         },
     },
     data() {
@@ -222,6 +222,54 @@ export default {
                     order: 0,
                     ischeck: false,
                 },
+				{
+				    id: "2",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},{
+                    id: "11",
+                    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+                    name: "图片",
+                    order: 0,
+                    ischeck: false,
+                },
+				{
+				    id: "22",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},
+				{
+				    id: "111",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},
+				{
+				    id: "222",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},
+				{
+				    id: "112",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},
+				{
+				    id: "232",
+				    url: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/40.jpg",
+				    name: "图片",
+				    order: 0,
+				    ischeck: false,
+				},
             ],
             chooseList: [],
 
@@ -251,9 +299,10 @@ export default {
 
         choose(item) {
             if (!item.ischeck) {
+				console.log(this.max)
                 if (this.chooseList.length >= this.max) {
                     return this.$message({
-                        message: `最多选择¥${this.max}张图片`,
+                        message: `最多选择${this.max}张图片`,
                         type: "warning",
                     });
                 }
@@ -312,7 +361,7 @@ export default {
                 });
             });
         },
-        chooseImage(cb) {
+        chooseImage(cb, max) {
             this.unChoose();
             this.callback = cb;
             this.imageModel = true;

@@ -197,9 +197,45 @@
             </el-tab-pane>
             <el-tab-pane label="商品属性"> 商品属性 </el-tab-pane>
             <el-tab-pane label="媒体设置">
-                <TEditor />
+				<el-form>
+					<el-form-item label="商品大图">
+						<div class="d-flex flex-wrap">
+							<div
+								v-for="(item,index) in banners"
+								:key="index"
+								v-if="banners.length > 0"
+								style="width:150px;height:150px;cursor: pointer;" 
+								class="border d-flex rounded align-items-center justify-content-center mr-2 mb-3 position-relative"	
+								@click="chooseImage(index)"
+							>
+								<img
+									:src="item.url" 
+									v-if="item.url"
+									style="width:100px;height: 50px;"
+								/>
+								<el-icon size="15px"
+									style="position:absolute;top:0;right:0; background-color: rgba(0,0,0,0.4);"
+									@click.stop="deleteImage(index)"
+								>
+									<Delete />
+								</el-icon>
+							</div>
+							<div
+								v-if="banners.length < 5"
+								style="width:150px;height:150px;cursor: pointer;" 
+								class="border d-flex rounded align-items-center justify-content-center mr-2 mb-3"	
+								@click="chooseImage(-1)"
+							>
+								<el-icon size="50px">
+									<Plus />
+								</el-icon>
+							</div>
+						</div>
+					</el-form-item>
+					
+				</el-form>
             </el-tab-pane>
-            <el-tab-pane label="商品详情"> 商品详情 </el-tab-pane>
+            <el-tab-pane label="商品详情"> <TEditor /> </el-tab-pane>
             <el-tab-pane label="折扣设置"> 折扣设置 </el-tab-pane>
         </el-tabs>
     </div>
@@ -208,12 +244,17 @@
 import skuCard from "@/components/goods/create/sku/sku-card.vue";
 import skuTable from "@/components/goods/create/sku/sku-table.vue";
 import TEditor from "@/components/TEditor/index.vue";
+import { Plus, Delete } from '@element-plus/icons-vue'
 import { mapState, mapMutations } from "vuex";
+
 export default {
+	inject:['app'],
     components: {
         skuCard,
         skuTable,
         TEditor,
+		Plus,
+		Delete
     },
     computed: {
         ...mapState({
@@ -230,7 +271,7 @@ export default {
             pprice: (state) => state.goods_create.pprice, //销售价格
             cprice: (state) => state.goods_create.cprice, //成本价格
             weight: (state) => state.goods_create.weight, //重量
-
+			banners: (state) => state.goods_create.banners, //商品主图
             sku_card: (state) => state.goods_create.sku_card,
         }),
 
@@ -522,7 +563,7 @@ export default {
 			
         };
     },
-
+	
     methods: {
         ...mapMutations(["addSkuCard", "vModelState"]),
         vModel(key, value) {
@@ -545,8 +586,30 @@ export default {
 			this.$refs.skuTableRef.list.forEach(item => {
 				item[this.updateAllStatus] = this.updateAllValue
 			})
+		},
+		// 选择图片
+		chooseImage(index) {
+			const MAX = 5
+			let count = MAX - this.banners.length
+		    this.app.chooseImage((res) => {
+				let list = []
+				// 点击plus
+				if(index === -1) {
+					list = [...this.banners, ...res]
+				} else { //点击图片，替换操作
+					list = [...this.banners]
+					list[index] = res[0]
+				}
+				
+				this.vModel('banners', list)
+		    }, index === -1 ? count : 1);
+		},
+		// 删除图片
+		deleteImage(index) {
+			let list = [...this.banners]
+			list.splice(index, 1)
+			this.vModel('banners', list)
 		}
-		
     },
 };
 </script>
