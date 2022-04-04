@@ -187,16 +187,42 @@
 								</div>								
 							</template>
 						</el-form-item>
-						
-						
+											
                         <el-form-item label="商品规格" v-if="skuCardTotal">
                             <skuTable ref="skuTableRef"/>
                         </el-form-item>
                     </el-form>
                 </template>
             </el-tab-pane>
-            <el-tab-pane label="商品属性"> 商品属性 </el-tab-pane>
-            <el-tab-pane label="媒体设置">
+            <el-tab-pane label="商品属性">
+				<el-form label-width="80px">
+					<el-form-item label="商品类型">
+						<el-select 
+							:model-value="goods_type_id"
+							@change="vModel('goods_type_id', $event)"
+							placeholder="请选择商品类型">
+							<el-option label="区域一" value="shanghai"></el-option>
+							<el-option label="区域2" value="shanghai2"></el-option>
+						</el-select>
+					</el-form-item>
+					<div class="card">
+						<div class="card-header">
+							<span>商品属性</span>
+						</div>
+						<div class="card-body">
+							<el-form inline>
+								<el-form-item label="输入框">
+									<el-input 
+										:model-value="goods_attrs.value"
+										@input="vModelGoodsAttrs({key:'value',value:$event})"
+									></el-input>
+								</el-form-item>
+							</el-form>
+						</div>
+					</div>
+				</el-form>
+			</el-tab-pane>
+            <el-tab-pane label="商品主图">
 				<el-form>
 					<el-form-item label="商品大图">
 						<div class="d-flex flex-wrap">
@@ -236,7 +262,19 @@
 				</el-form>
             </el-tab-pane>
             <el-tab-pane label="商品详情"> <TEditor /> </el-tab-pane>
-            <el-tab-pane label="折扣设置"> 折扣设置 </el-tab-pane>
+            <el-tab-pane label="折扣设置">
+				<el-form>					
+					<el-form-item label="会员价">
+						<el-input :model-value="discount"
+							@input="vModel('discount', $event)"
+						>
+							<template #append>
+								%
+							</template>
+						</el-input>
+					</el-form-item>
+				</el-form>
+			</el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -273,6 +311,10 @@ export default {
             weight: (state) => state.goods_create.weight, //重量
 			banners: (state) => state.goods_create.banners, //商品主图
             sku_card: (state) => state.goods_create.sku_card,
+			goods_type_id: (state) => state.goods_create.goods_type_id,
+			goods_attrs: (state) => state.goods_create.goods_attrs,
+			discount: (state) => state.goods_create.discount,
+			
         }),
 
         skuCardTotal() {
@@ -565,7 +607,7 @@ export default {
     },
 	
     methods: {
-        ...mapMutations(["addSkuCard", "vModelState"]),
+        ...mapMutations(["addSkuCard", "vModelState", 'vModelGoodsAttrs']),
         vModel(key, value) {
             this.vModelState({ key, value });
         },
@@ -609,6 +651,9 @@ export default {
 			let list = [...this.banners]
 			list.splice(index, 1)
 			this.vModel('banners', list)
+		},
+		ceshi(e) {
+			console.log(e, 'e')
 		}
     },
 };

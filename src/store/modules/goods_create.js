@@ -17,7 +17,20 @@ export default {
 
         cprice: 0, //成本价格
         weight: 0, //重量
-
+		
+		//商品类型
+		goods_type_id : '',
+		goods_attrs: {
+			value:''
+		},
+		// 商品主图
+		banners:[
+			// {
+			// 	id:'1',
+			// 	url:''
+			// }
+		],
+		
         // 多规格卡片
         sku_card: [
             {
@@ -33,13 +46,6 @@ export default {
             },
         ],
 		
-		// 商品主图
-		banners:[
-			// {
-			// 	id:'1',
-			// 	url:''
-			// }
-		],
 		
         //规格table
         //表头
@@ -50,6 +56,9 @@ export default {
             { name: "库存", rowspan: 2, width: "60" },
             { name: "编码", rowspan: 2, width: "60" },
         ],
+		
+		// 折扣
+		discount: 0,
     },
     getters: {
         // 获取规格项的name :颜色，尺码
@@ -136,6 +145,10 @@ export default {
         updateSkuValue(state, { cardIndex, listIndex, key, value }) {
             state.sku_card[cardIndex].list[listIndex][key] = value;
         },
+		//修改商品属性
+		vModelGoodsAttrs(state, { key, value}){
+			state.goods_attrs[key] = value
+		}
     },
     actions: {},
 };

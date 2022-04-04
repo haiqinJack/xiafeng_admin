@@ -44,6 +44,23 @@ let routes = [
             },
         ],
     },
+	{
+	    name: "category",
+	    component: "layout/index",
+	    meta: {
+	        title: "分类管理",
+	        icon: "el-icon-picture",
+	    },
+	    children: [
+	        {
+	            meta: {
+	                title: "分类管理",
+	                icon: "el-icon-picture",
+	            },
+	            component: "category/list",
+	        },
+	    ],
+	},
     {
         name: "goods",
         component: "layout/index",
