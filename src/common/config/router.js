@@ -44,41 +44,36 @@ let routes = [
             },
         ],
     },
-	{
-	    name: "category",
-	    component: "layout/index",
-	    meta: {
-	        title: "分类管理",
-	        icon: "el-icon-picture",
-	    },
-	    children: [
-	        {
-	            meta: {
-	                title: "分类管理",
-	                icon: "el-icon-picture",
-	            },
-	            component: "category/list",
-	        },
-	    ],
-	},
     {
         name: "goods",
         component: "layout/index",
         meta: {
-            title: "菜品管理",
+            title: "商品管理",
             icon: "el-icon-data-analysis",
         },
         children: [
+			{
+			    component: "goods/category",
+			    meta: {
+			        title: "商品分类",
+			    },
+			},
+			{
+			    component: "goods/sku",
+			    meta: {
+			        title: "商品规格",
+			    },
+			},
             {
                 component: "goods/list",
                 meta: {
-                    title: "菜品列表",
+                    title: "商品列表",
                 },
             },
             {
                 component: "goods/create",
                 meta: {
-                    title: "新增菜品",
+                    title: "新增商品",
                 },
             },
         ],
