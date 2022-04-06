@@ -9,14 +9,18 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./permission";
+// import Cloudbase from "@cloudbase/vue-provider";
+
 const app = createApp(App);
 
 var url = window.location.href;
 url = url.split(window.location.host)[1];
-console.log("url", url);
 
 router.push(url);
 
-app.use(router).use(store).use(ElementPlus);
+app.use(router).use(store).use(ElementPlus)
+	// .use(Cloudbase, {
+	// 	env: "xxxx-yyy" //此处为环境 ID
+	// });
 
 router.isReady().then(() => app.mount("#app"));

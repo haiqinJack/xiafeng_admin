@@ -11,6 +11,7 @@
                 placeholder="要搜索商品名称"
             >
                 <template #left>
+					<el-button type="success" @click="onasy">匿名登录</el-button>
                     <router-link :to="{ name: 'goods_create' }">
                         <el-button type="primary">发布</el-button>
                     </router-link>
@@ -130,7 +131,10 @@
 </template>
 <script>
 import ButtonSearch from "@/components/ButtonSearch.vue";
-
+import cloudbase from "@cloudbase/js-sdk";
+const cloud = cloudbase.init({
+  env: "cloud1-4gknyl1ob42fa28a" //此处为环境 ID
+});
 export default {
     components: { ButtonSearch },
     data() {
@@ -213,6 +217,28 @@ export default {
         handleSelectionChange(val) {
             multipleSelection = val;
         },
+		onasy() {
+			cloud
+			.auth({
+			  persistence: "session",
+			})
+			.anonymousAuthProvider()
+			.signIn()
+			.then((res) => {
+			  console.log(res);
+			  this.$message({
+				message: "登录成功",
+				type: "success",
+			  });
+			})
+			.catch((err) => {
+			  console.log(err);
+			  this.$message({
+				message: "请检查输入" + err,
+				type: "warning",
+			  });
+			});
+		}, 
     },
 };
 </script>

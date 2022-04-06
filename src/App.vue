@@ -2,11 +2,13 @@
     <router-view />
     <imageDialog ref="ImageDialogRef" :max="max" />
     <skuDialog ref="SkuDialogRef" />
+	
 </template>
 
 <script>
 import imageDialog from "@/components/image/ImageDialog.vue";
 import skuDialog from "@/components/skus/sku-dialog.vue";
+
 export default {
     components: {
         imageDialog,
@@ -38,6 +40,7 @@ export default {
         chooseSkus(cb) {
             this.$refs.SkuDialogRef.chooseSkus(cb);
         },
+		
     },
 };
 </script>

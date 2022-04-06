@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 
 const corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "https://cloud1-4gknyl1ob42fa28a-1252593671.tcloudbaseapp.com",
     methods: ["GET", "PUT", "POST"],
 };
 

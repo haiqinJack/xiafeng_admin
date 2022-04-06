@@ -6,6 +6,94 @@
   version "7.17.8"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.17.8.tgz#2817fb9d885dd8132ea0f8eb615a6388cca1c240"
 
+"@cloudbase/adapter-interface@^0.4.0":
+  version "0.4.1"
+  resolved "https://registry.npmmirror.com/@cloudbase/adapter-interface/-/adapter-interface-0.4.1.tgz#92c37e1a844d0964dd686806c70cb00e6ccabae2"
+
+"@cloudbase/analytics@^1.1.1-alpha.0":
+  version "1.1.4"
+  resolved "https://registry.npmmirror.com/@cloudbase/analytics/-/analytics-1.1.4.tgz#b8c8df0013ee052c8f53cf7a3546fd27c5368593"
+  dependencies:
+    "@cloudbase/functions" "^1.3.4"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+
+"@cloudbase/app@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npmmirror.com/@cloudbase/app/-/app-1.4.1.tgz#28c57ee31e792b3d3efe93022ea55b25cc2f9429"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    "@cloudbase/utilities" "^1.3.4"
+    cloudbase-adapter-wx_mp "0.2.0"
+
+"@cloudbase/auth@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.npmmirror.com/@cloudbase/auth/-/auth-1.6.1.tgz#6225909e158ff9dcbc2269da05169199194e8103"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
+    "@cloudbase/app" "^1.4.1"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    "@cloudbase/utilities" "^1.3.4"
+    sourcemapped-stacktrace "^1.1.11"
+
+"@cloudbase/database@0.9.18-next":
+  version "0.9.18-next"
+  resolved "https://registry.npmmirror.com/@cloudbase/database/-/database-0.9.18-next.tgz#3c8919512c891783f3acaad7228da2dfcfd951d7"
+  dependencies:
+    bson "^4.0.2"
+    lodash.clonedeep "4.5.0"
+    lodash.set "4.3.2"
+    lodash.unset "4.5.2"
+
+"@cloudbase/functions@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.npmmirror.com/@cloudbase/functions/-/functions-1.3.4.tgz#b8ab065dd1eb1dc715318de15dd79e4b28c777f5"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    "@cloudbase/utilities" "^1.3.4"
+
+"@cloudbase/js-sdk@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmmirror.com/@cloudbase/js-sdk/-/js-sdk-1.7.2.tgz#49a69a4531dbedb73cbfc4ebaa2820193b406530"
+  dependencies:
+    "@cloudbase/analytics" "^1.1.1-alpha.0"
+    "@cloudbase/app" "^1.4.1"
+    "@cloudbase/auth" "^1.6.1"
+    "@cloudbase/database" "0.9.18-next"
+    "@cloudbase/functions" "^1.3.4"
+    "@cloudbase/realtime" "^1.1.4-alpha.0"
+    "@cloudbase/storage" "^1.3.4"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    "@cloudbase/utilities" "^1.3.4"
+
+"@cloudbase/realtime@^1.1.4-alpha.0":
+  version "1.1.4-alpha.0"
+  resolved "https://registry.npmmirror.com/@cloudbase/realtime/-/realtime-1.1.4-alpha.0.tgz#21c538d5df15ee703fb3766ee733a9d7f7676416"
+  dependencies:
+    "@cloudbase/types" "^1.1.3-alpha.0"
+
+"@cloudbase/storage@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.npmmirror.com/@cloudbase/storage/-/storage-1.3.4.tgz#522c283ad9cb4fc727f063c4ef4653a9762f0890"
+  dependencies:
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    "@cloudbase/utilities" "^1.3.4"
+
+"@cloudbase/types@^1.1.3-alpha.0":
+  version "1.1.3-alpha.0"
+  resolved "https://registry.npmmirror.com/@cloudbase/types/-/types-1.1.3-alpha.0.tgz#adf754c620f5d58f9758639d0d7f4f6f3e12a330"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
+
+"@cloudbase/utilities@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.npmmirror.com/@cloudbase/utilities/-/utilities-1.3.4.tgz#40d828fd9a561c2be49fe12cda4e1f7faf6b95e2"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
+    "@cloudbase/types" "^1.1.3-alpha.0"
+    crypto-js "3"
+
 "@ctrl/tinycolor@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
@@ -176,6 +264,10 @@ balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
 
+base64-js@^1.3.1:
+  version "1.5.1"
+  resolved "https://registry.npmmirror.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+
 body-parser@1.19.2:
   version "1.19.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.2.tgz#4714ccd9c157d44797b8b5607d72c0b89952f26e"
@@ -208,6 +300,19 @@ browserslist@^4.20.2:
     node-releases "^2.0.2"
     picocolors "^1.0.0"
 
+bson@^4.0.2:
+  version "4.6.2"
+  resolved "https://registry.npmmirror.com/bson/-/bson-4.6.2.tgz#3241c79d23d225b86ab6d2bc268b803d8a5fd444"
+  dependencies:
+    buffer "^5.6.0"
+
+buffer@^5.6.0:
+  version "5.7.1"
+  resolved "https://registry.npmmirror.com/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.1.13"
+
 bytes@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
@@ -222,6 +327,12 @@ chalk@^4.0.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+cloudbase-adapter-wx_mp@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/cloudbase-adapter-wx_mp/-/cloudbase-adapter-wx_mp-0.2.0.tgz#21bd81acec852373ee8b62ab4de57e535eec0059"
+  dependencies:
+    "@cloudbase/adapter-interface" "^0.4.0"
 
 color-convert@^2.0.1:
   version "2.0.1"
@@ -265,6 +376,10 @@ cors@^2.8.5:
   dependencies:
     object-assign "^4"
     vary "^1"
+
+crypto-js@3:
+  version "3.3.0"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -562,6 +677,10 @@ iconv-lite@0.4.24:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+ieee754@^1.1.13:
+  version "1.2.1"
+  resolved "https://registry.npmmirror.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+
 inherits@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
@@ -596,6 +715,18 @@ lodash-es@^4.17.21:
 lodash-unified@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash-unified/-/lodash-unified-1.0.2.tgz#bb2694db3533781e5cce984af60cfaea318b83c1"
+
+lodash.clonedeep@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.npmmirror.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.set@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmmirror.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+
+lodash.unset@4.5.2:
+  version "4.5.2"
+  resolved "https://registry.npmmirror.com/lodash.unset/-/lodash.unset-4.5.2.tgz#370d1d3e85b72a7e1b0cdf2d272121306f23e4ed"
 
 lodash@^4.17.21:
   version "4.17.21"
@@ -807,6 +938,10 @@ source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
 
+source-map@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.npmmirror.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+
 source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
@@ -814,6 +949,12 @@ source-map@^0.6.1:
 sourcemap-codec@^1.4.8:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
+
+sourcemapped-stacktrace@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.npmmirror.com/sourcemapped-stacktrace/-/sourcemapped-stacktrace-1.1.11.tgz#e2dede7fc148599c52a4f883276e527f8452657d"
+  dependencies:
+    source-map "0.5.6"
 
 "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
   version "1.5.0"

@@ -37,6 +37,7 @@
 	</div>
 </template>
 <script>
+import cloudbase from "@cloudbase/js-sdk";
 export default {
 	data() {
 		return {
@@ -65,6 +66,22 @@ export default {
 				  }
 			]
 		}
+	},
+	setup(){
+		const cloud = cloudbase.init({
+		  env: "cloud1-4gknyl1ob42fa28a"
+		});
+		cloud
+			.auth()
+			.anonymousAuthProvider()
+			.signIn()
+			.then(() => {
+			  const db = cloud.database();
+			  db.collection('goods').get().then((result) => {
+			  	console.log(result);
+			  });
+			});
+		
 	},
 	methods:{
 		handleNodeClick(data) {
@@ -108,7 +125,6 @@ export default {
 			  	// `this` 被绑定到当前实例
 			  	this.$refs.labelInput.focus()
 			  })
-			  // dataSource.value = [...dataSource.value]
 		},
 		remove(node, data) {
 			this.$confirm('此操作将删除该分类，是否继续？', '提示', {

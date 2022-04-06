@@ -52,6 +52,13 @@ let routes = [
             icon: "el-icon-data-analysis",
         },
         children: [
+			
+			{
+			    component: "goods/list",
+			    meta: {
+			        title: "商品列表",
+			    },
+			},
 			{
 			    component: "goods/category",
 			    meta: {
@@ -64,12 +71,12 @@ let routes = [
 			        title: "商品规格",
 			    },
 			},
-            {
-                component: "goods/list",
-                meta: {
-                    title: "商品列表",
-                },
-            },
+			{
+			    component: "goods/type",
+			    meta: {
+			        title: "商品类型",
+			    },
+			},
             {
                 component: "goods/create",
                 meta: {
